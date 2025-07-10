@@ -17,12 +17,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
 private slots:
     void addPage();
     void searchPage();
+    void reload();
 private:
     Ui::MainWindow *ui;
     AddPage *addpage;
     Search *searchpage;
+    void allItens();
 };
 #endif // MAINWINDOW_H

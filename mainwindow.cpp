@@ -4,15 +4,8 @@
 #include <QSqlQuery>
 #include <QStringList>
 #include <QStringListModel>
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
-    connect(ui->btnAdd, SIGNAL(clicked()),this,SLOT(addPage()));
-    connect(ui->btnPesq,SIGNAL(clicked()),this,SLOT(searchPage()));
 
-
+void MainWindow::allItens(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setDatabaseName("mercado");
     db.setPort(3306);
@@ -40,6 +33,17 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 }
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    connect(ui->btnAdd, SIGNAL(clicked()),this,SLOT(addPage()));
+    connect(ui->btnPesq,SIGNAL(clicked()),this,SLOT(searchPage()));
+    connect(ui->tbtnReload,SIGNAL(clicked()),this,SLOT(reload()));
+
+    allItens();
+}
 
 MainWindow::~MainWindow()
 {
@@ -52,4 +56,7 @@ void MainWindow::addPage(){
 void MainWindow::searchPage(){
     searchpage = new Search(this);
     searchpage -> show();
+}
+void MainWindow::reload(){
+    allItens();
 }
