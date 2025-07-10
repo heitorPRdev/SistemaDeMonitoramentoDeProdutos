@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <addpage.h>
+#include <search.h>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -18,8 +19,10 @@ public:
     ~MainWindow();
 private slots:
     void addPage();
+    void searchPage();
 private:
     Ui::MainWindow *ui;
     AddPage *addpage;
+    Search *searchpage;
 };
 #endif // MAINWINDOW_H

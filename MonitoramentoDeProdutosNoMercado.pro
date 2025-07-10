@@ -11,15 +11,18 @@ CONFIG += c++17
 SOURCES += \
     addpage.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    search.cpp
 
 HEADERS += \
     addpage.h \
-    mainwindow.h
+    mainwindow.h \
+    search.h
 
 FORMS += \
     addpage.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    search.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

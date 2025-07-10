@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->btnAdd, SIGNAL(clicked()),this,SLOT(addPage()));
+    connect(ui->btnPesq,SIGNAL(clicked()),this,SLOT(searchPage()));
+
+
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setDatabaseName("mercado");
     db.setPort(3306);
@@ -33,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
         query.exec("SELECT COUNT(item) FROM produtos");
         while(query.next()){
             QString total=query.value(0).toString();
-            ui ->  lTotal -> setText("Total: "total);
+            ui ->  lTotal -> setText("Total: "+total);
         }
     }
 }
@@ -42,7 +45,11 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-void  MainWindow::addPage(){
+void MainWindow::addPage(){
     addpage = new AddPage(this);
     addpage->show();
+}
+void MainWindow::searchPage(){
+    searchpage = new Search(this);
+    searchpage -> show();
 }
